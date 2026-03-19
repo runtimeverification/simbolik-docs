@@ -1,0 +1,93 @@
+import { Callout } from 'vocs/components'
+
+# Static Analysis
+
+Simbolik surfaces `forge lint` diagnostics directly in VSCode, giving you instant
+feedback on bugs, vulnerabilities, style violations, and gas inefficiencies as you write
+code.
+
+<video autoPlay loop>
+    <source src="/simbolik-static-analysis.mp4" />
+</video>
+
+## How It Works
+
+Simbolik runs `forge lint` in the background and maps the output to VSCode diagnostics.
+Results appear as:
+
+- Inline squiggles in the editor, colour-coded by severity
+- Entries in the **Problems** panel (`Ctrl+Shift+M` / `Cmd+Shift+M`)
+
+No additional setup is required — static analysis is active as soon as a Foundry project
+is open.
+
+## Detectors
+
+### High Severity
+
+Issues likely to cause incorrect behaviour or loss of funds.
+
+| Detector | Description |
+|---|---|
+| `incorrect-shift` | Shift operation where the operands may be in the wrong order |
+| `unchecked-call` | Low-level call whose success return value is not checked |
+| `erc20-unchecked-transfer` | ERC20 `transfer` / `transferFrom` return value not checked |
+
+### Medium Severity
+
+Issues that can cause subtle bugs or precision loss.
+
+| Detector | Description |
+|---|---|
+| `divide-before-multiply` | Division performed before multiplication in the same expression, risking precision loss |
+| `unsafe-typecast` | Typecast that can silently truncate a value |
+
+### Informational / Style
+
+Violations of the [Solidity style guide](https://docs.soliditylang.org/en/latest/style-guide.html) and general code quality.
+
+| Detector | Description |
+|---|---|
+| `pascal-case-struct` | Struct name does not use `PascalCase` |
+| `mixed-case-function` | Function name does not use `mixedCase` |
+| `mixed-case-variable` | Mutable variable name does not use `mixedCase` |
+| `screaming-snake-case-const` | `constant` variable name does not use `SCREAMING_SNAKE_CASE` |
+| `screaming-snake-case-immutable` | `immutable` variable name does not use `SCREAMING_SNAKE_CASE` |
+| `unused-import` | Import is never referenced and should be removed |
+| `unaliased-plain-import` | Plain `import ".."` — prefer named imports `{ A, B }` or an alias `import ".." as X` |
+| `named-struct-fields` | Struct literal initialised without named fields |
+| `unsafe-cheatcode` | Usage of a cheatcode that can perform dangerous operations |
+
+### Gas Optimisations
+
+Patterns with known cheaper alternatives.
+
+| Detector | Description |
+|---|---|
+| `asm-keccak256` | `keccak256` call that could use inline assembly for gas savings |
+| `custom-errors` | `revert` with a string — prefer custom errors |
+
+### Code Size
+
+Patterns that inflate contract bytecode.
+
+| Detector | Description |
+|---|---|
+| `unwrapped-modifier-logic` | Modifier logic not wrapped in a function, duplicating bytecode at every use site |
+
+## Configuring Lint Rules
+
+<Callout type="info">
+  Lint configuration is managed in your Foundry project, not in VSCode settings.
+</Callout>
+
+You can enable or disable individual detectors in `foundry.toml`. For example, to disable
+a noisy style rule:
+
+```toml
+[lint]
+exclude_lints = ["unaliased-plain-import"]
+```
+
+Refer to the [Foundry documentation](https://getfoundry.sh) for the full set of
+configuration options.

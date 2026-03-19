@@ -1,0 +1,48 @@
+import { Callout } from 'vocs/components'
+
+# Testing
+
+Simbolik integrates with VSCode's native Test Explorer to run and debug your Foundry tests
+without leaving the editor.
+
+<video autoPlay loop>
+    <source src="/simbolik-test-explorer.mp4" />
+</video>
+
+## Running Tests
+
+Tests are discovered automatically from your Foundry project. Open the **Testing** panel
+(flask icon in the Activity Bar) to see all your test contracts and individual test
+functions organized in a tree that mirrors your project structure.
+
+Run tests using the play buttons next to any item in the tree — a single test, an entire
+contract, or the whole suite. You can also trigger a run from the editor gutter or the
+Command Palette (`Test: Run All Tests`).
+
+After a run the tree updates with pass/fail status for each test. Failed tests also show
+an inline error overlay in the editor at the line where the failure occurred. Use
+**Show Output** in the Test Explorer toolbar to open the full output in the
+**Test Results** panel.
+
+### Filtering
+
+Use the **Filter** button in the toolbar to narrow the tree by status (passed, failed,
+skipped) or to show only tests from the currently open file. The search box also accepts
+`@passed`, `@failed`, and similar status tokens.
+
+## Debugging Tests
+
+Each test in the explorer has a **Debug** action. Clicking it launches a full debugging
+session for that test, letting you step through the Solidity source, inspect variables,
+and set breakpoints — the same experience as debugging any other function.
+
+<Callout type="info">
+  Debugging Foundry tests is only available for signed up users with the `Barista` role.
+  See [Account](/account) for details.
+</Callout>
+
+## Limitations
+
+- Network forking is currently not supported
+- FFI is currently not supported
+- Some cheatcodes are currently not supported

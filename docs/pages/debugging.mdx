@@ -1,0 +1,111 @@
+import { Callout } from 'vocs/components'
+
+# Debugging
+
+Simbolik comes with a true source-level debugger for Solidity.
+Some highlights:
+
+- **Breakpoints** — pause execution on any Solidity source line
+- **Variable inspection** — inspect contract state, local variables, and memory at any point
+- **Time travel debugging** — step forward *and* backward through execution
+- **Disassembly view** — see the EVM bytecode alongside your Solidity source
+- **Stop on events and reverts** — automatically pause when an event is emitted or a revert occurs
+
+## Starting a Debugging Session
+
+<Callout type="info">
+  Debugging requires an [API key](/getting-started#optional-create-a-free-account)
+</Callout>
+
+Debugging is a zero-configuration process in Simbolik.
+Just click the `▷ Debug` button above your Solidity function.
+
+Under the hood Simbolik roughly runs the following steps:
+
+:::steps
+###
+Compile the project
+###
+Prompt user for function parameters (if any)
+###
+Launch a local testnet
+###
+Deploy your contracts
+###
+Send target transaction
+###
+Trace transaction
+::::
+
+<Callout type="tip">
+    First time using a debugger? Read the [VSCode Docs](https://code.visualstudio.com/docs/debugtest/debugging)
+</Callout>
+
+<video autoPlay loop>
+    <source src="/simbolik-step-and-inspect.mp4" />
+</video>
+
+## Function Parameters
+
+When you click `▷ Debug` on a function that takes parameters, Simbolik shows an input
+box. Type the arguments in **Solidity literal syntax**, separated by commas — the same
+way you would write them in a test.
+
+```
+// Examples
+42, 0xAbCd...1234, true
+[1, 2, 3], "hello"
+```
+
+Simbolik validates the input against the ABI types in real time and highlights any type
+mismatch before the session starts.
+
+## Breakpoints
+
+Click the gutter to the left of any Solidity source line to set a breakpoint.
+Execution pauses there and the **Variables** panel shows the current state of all
+local and storage variables.
+
+## Variable Inspection
+
+When paused, use the standard VSCode panels to inspect state:
+
+- **Variables** — local variables, function parameters, and contract storage
+- **Watch** — type any Solidity expression to evaluate it at the current point
+- **Call Stack** — navigate the full call chain across internal and external calls
+
+## Time Travel Debugging
+
+Simbolik records the full execution trace before the session starts.
+This means you can step **backward** as well as forward — useful for understanding
+how a revert or unexpected state was reached without having to restart the session.
+
+Use the **Step Back** and **Reverse Continue** buttons in the debug toolbar.
+
+## Disassembly View
+
+The disassembly view shows the compiled EVM bytecode alongside the Solidity source.
+To open it, right-click a frame in the **Call Stack** panel and select
+**Open Disassembly View**.
+
+## Debugging Foundry Tests
+
+<Callout type="info">
+    Debugging Foundry tests is only available for signed up users with the `Barista` role.
+    See [Account](/account) for details.
+</Callout>
+
+You can debug any Foundry test directly from the [Test Explorer](/testing). Each test
+has a **Debug** action that launches a full debugging session for that test — letting
+you set breakpoints, step through Solidity source, and inspect variables exactly as you
+would when debugging a regular function.
+
+### Limitations
+
+Simbolik currently has certain limitations when it comes to debugging tests.
+If you're interested in these features, please drop us a message, or consider
+contributing financially to their development.
+
+- Network forking is currently not supported
+- FFI is currently not supported
+- Some cheatcodes are currently not supported

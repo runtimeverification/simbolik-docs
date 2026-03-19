@@ -1,3 +1,72 @@
+import { Button } from 'vocs/components'
+
 # Get started
 
-Hello world!
+## Install Foundry
+
+Simbolik uses [Foundry](https://www.getfoundry.sh/) as a backend for
+compilation, testing and linting.
+
+```bash
+curl -L https://foundry.paradigm.xyz | bash && foundryup
+```
+
+## Install Simbolik for VSCode
+
+You can install Simbolik in VSCode using 1-click button, the `code` CLI or the extensions
+panel from inside VSCode.
+
+<Button href="vscode:extension/RuntimeVerification.simbolik">Install in VSCode</Button>
+
+<div className="text-center"> — or — </div>
+
+```bash
+code --install-extension runtimeverification.simbolik
+```
+
+<div className="text-center"> — or — </div>
+
+<video autoPlay loop>
+    <source src="/simbolik-install-vscode.mp4" />
+</video>
+
+## Install Simbolik for Cursor
+
+You can install Simbolik in Cursor using the `cursor` CLI or the extensions panel from inside Cursor.
+
+```bash
+cursor --install-extension runtimeverification.simbolik
+```
+
+<div className="text-center"> — or — </div>
+
+<video autoPlay loop>
+    <source src="/simbolik-install-cursor.mp4" />
+</video>
+
+
+## Optional: Create a free account
+
+Some Simbolik tools need an API key.
+You can create one for free by registering on the [simbolik.dev](https://simbolik.dev).
+
+:::steps
+
+### Sign up / Sign in
+
+You can login using either GitHub, Google, or MetaMask as an authentication provider.
+
+![Sign in](/api-key-step-1.png)
+
+### Copy API key
+
+Copy the API key from the account page.
+
+![Copy Key](/api-key-step-2.png)
+
+### Paste API key
+
+Paste the key into the VSCode settings. Search for `simbolik.api-key`
+
+![Paste Key](/api-key-step-3.png)
+:::

@@ -1,0 +1,58 @@
+# Configuration
+
+All Simbolik settings live under the `simbolik` namespace in VSCode settings.
+Open them via **File → Preferences → Settings** and search for `simbolik`,
+or edit `settings.json` directly.
+
+## API Key
+
+| Setting | Default |
+|---|---|
+| `simbolik.api-key` | — |
+
+The API key used to authenticate with the Simbolik server. Required for debugging and
+test-explorer features. See [Getting Started](/getting-started#optional-create-a-free-account)
+for instructions on obtaining a key.
+
+## Forge Path
+
+| Setting | Default |
+|---|---|
+| `simbolik.forge-path` | `forge` |
+
+Path to the `forge` executable. If `forge` is already on your `PATH` the default works
+out of the box. Set this to an absolute path if you installed Foundry in a non-standard
+location.
+
+## Autobuild
+
+| Setting | Default | Options |
+|---|---|---|
+| `simbolik.autobuild` | `on-change` | `never` · `on-change` · `always` |
+
+Controls when Simbolik recompiles your project:
+
+- **`never`** — never build automatically; useful when you run `forge build --watch` yourself.
+- **`on-change`** — rebuild whenever a source file changes (default).
+- **`always`** — rebuild before every debugging session.
+
+## Disassembly View
+
+| Setting | Default |
+|---|---|
+| `simbolik.auto-open-disassembly-view` | `false` |
+| `simbolik.show-sourcemaps` | `false` |
+
+- **`auto-open-disassembly-view`** — automatically open the EVM disassembly panel when a
+  debugging session starts.
+- **`show-sourcemaps`** — include sourcemap annotations in the disassembly view; useful
+  when debugging sourcemap issues.
+
+## Server (Advanced)
+
+| Setting | Default |
+|---|---|
+| `simbolik.server` | `wss://code.simbolik.dev` |
+
+WebSocket URL of the Simbolik backend. You only need to change this if you are running a
+self-hosted Simbolik server.

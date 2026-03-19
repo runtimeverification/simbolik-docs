@@ -1,0 +1,54 @@
+# Test Coverage
+
+Simbolik integrates with VSCode's native code coverage UI to show which lines of your
+Solidity contracts are exercised by your Foundry tests.
+
+<video autoPlay loop>
+    <source src="/simbolik-coverage.mp4" />
+</video>
+
+## Running Coverage
+
+Run tests with coverage using the **Run with Coverage** button (play button with a shield
+icon) in the Test Explorer toolbar, or right-click any item in the test tree to run
+coverage for a single contract or file. Coverage can also be triggered from the
+Command Palette (`Test: Run All Tests with Coverage`).
+
+## Coverage in the Editor
+
+Once coverage data is collected, toggle the **Show Inline Coverage** button in the Test
+Explorer toolbar to overlay it on your source files.
+
+VSCode shows a color indicator in the gutter for each line: covered lines are marked
+differently from uncovered lines, and hovering over a covered line shows how many times
+it was executed. Use the navigation arrows in the **Test Coverage** toolbar to jump
+between uncovered blocks without scrolling manually.
+
+Coverage is also visible in the Explorer file tree, so you can spot undertested files
+at a glance without opening them.
+
+## Coverage Summary
+
+The **Test Coverage** panel shows a tree with a coverage percentage for each file and
+folder. Three independent metrics are reported:
+
+| Metric | What it measures |
+|---|---|
+| **Statement** | Percentage of executable statements that were reached |
+| **Branch** | Percentage of conditional branches (both sides of every `if`, `?:`, `&&`, `\|\|`, etc.) that were taken |
+| **Function** | Percentage of functions (and modifiers) that were called at least once |
+
+These metrics tell different stories:
+
+- High **statement** but low **branch** coverage means your tests reach most code
+  but don't exercise all outcomes of conditional logic — for example, only ever hitting
+  the `true` side of an `if`.
+- Low **function** coverage is a strong signal that entire contract features are untested.
+- **Branch** coverage is generally the hardest metric to maximise and the most useful
+  indicator of test thoroughness.
+
+## Improving Coverage
+
+Use the gutter indicators to spot untested lines and the branch metric to find conditions
+that are only partially exercised. Add targeted test cases for those paths, then re-run
+coverage to see the updated results.

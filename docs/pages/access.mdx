@@ -1,0 +1,36 @@
+import { Callout } from 'vocs/components'
+
+# Access & Contributor Program
+
+Most of Simbolik works out of the box without an account — [static analysis](/static-analysis),
+the [test runner](/testing), and [code coverage](/code-coverage) are all free, open source and require
+no sign-up. You only need an account to use the **contract debugger**, which authenticates
+with the Simbolik backend to run and trace your transactions. A free account is enough for that.
+
+The **test-case debugger for Foundry** — stepping through test execution, cheatcodes, and
+complex setup functions — goes further, and is currently available as early access for
+**Barista** contributors. Building it required months of dedicated engineering, including
+a purpose-built Ethereum node designed specifically for debugging Foundry tests. It was
+built without external funding, and the contributor program is how we sustain its
+development.
+
+[**Join the Simbolik Contributor Program →**](https://simbolik.dev)
+
+## Creating an Account
+
+1. Go to [simbolik.dev](https://simbolik.dev) and sign up using **GitHub**, **Google**, or **MetaMask**.
+2. Copy the API key from your account page.
+3. Paste it into VSCode settings — search for `simbolik.api-key`.
+
+For a step-by-step walkthrough with screenshots see
+[Getting Started](/getting-started#optional-create-a-free-account).
+
+## Managing Your API Key
+
+Your API key is shown on your account page at [simbolik.dev](https://simbolik.dev).
+To rotate it, generate a new key from the same page and update `simbolik.api-key` in
+your VSCode settings.
+
+<Callout type="warning">
+  Keep your API key private. Do not commit it to source control.
+</Callout>
