@@ -2,6 +2,7 @@ import { defineConfig } from 'vocs'
 
 export default defineConfig({
   title: 'Simbolik',
+  basePath: '/simbolik-docs',
   sidebar: [
     {
       text: 'Getting Started',
