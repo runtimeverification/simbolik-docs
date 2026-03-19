@@ -1,8 +1,14 @@
 import { defineConfig } from 'vocs'
 
 export default defineConfig({
-  title: 'Simbolik',
+  title: 'Simbolik Docs',
   basePath: '/simbolik-docs/',
+  topNav: [
+    {
+      text: 'Simbolik',
+      link: 'https://simbolik.dev',
+    }
+  ],
   sidebar: [
     {
       text: 'Getting Started',
